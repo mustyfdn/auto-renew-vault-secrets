@@ -14,11 +14,12 @@ vault.hashicorp.com/agent-image: mustyfdn/vaultagent:v1
 vault.hashicorp.com/agent-inject-command-config: "sh /opt/restart_deployment.sh"
 ```
 
-#### Edit deployment to specify `shareProcessNamespace: true` like as the following
+#### Edit deployment to specify `shareProcessNamespace: true` like as the following and also add service service account with permissions required.
 
 ```bash
     spec:
       shareProcessNamespace: true
+      serviceAccountName: vault-rollout-sa
       containers:
       - args:
         - -c
